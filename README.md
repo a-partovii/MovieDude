@@ -2,6 +2,8 @@
 An advanced "Content-Based Filtering" movie recommendation system built with Python, scikit-learn, and SQLite.<br>
 It provides personalized film suggestions based on user preferences through data analysis, and allows users to search by a specific movie title to find similar recommendations.
 
+<img src="https://github.com/user-attachments/assets/163c4a81-32d4-4b16-bce8-367f3ecabcc0">
+
 ### Work Sessions
 
 <p><strong>On Users Table Flow </strong>>>><br>
