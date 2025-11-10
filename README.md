@@ -11,22 +11,24 @@ It provides personalized movie suggestions based on user preferences through dat
 
 - <strong>On Users Table Flow </strong>>>><br>
   Extract and analyze user activity data from the database to determine personal preferences.
-
-  1. Apply Min–Max data normalization
-  2. Extract top favorite movies by normalized score
-  3. Use quasi-NLP to extract movie attributes
-  4. Return finall result processed matrix ready for model use
-
+  <ol type="1">
+    <li>Apply Min–Max data normalization</li>
+    <li>Extract top favorite movies by normalized score</li>
+    <li>Use quasi-NLP to extract movie attributes</li>
+    <li>Return finall result processed matrix ready for model use</li>
+  </ol>
 - <strong>Main Engine Processes</strong> >>><br>
   Performs similarity analysis and recommendation generation based on user preferences and the database contents.
 
-  1. Pre-processing validation check
-  2. Multi-binary encoding
-  3. Apply selected options #1 (filter out watched movies)
-  4. Execute engine process
-  5. Apply selected options #2 (filter for high-rated movies)
-  6. Return final result as a list (array)
-  
+    <ol type="1">
+    <li>Pre-processing validation check</li>
+    <li>Multi-binary encoding</li>
+    <li>Apply selected options #1 (filter out watched movies)</li>
+    <li>Execute engine process</li>
+    <li>Apply selected options #2 (filter for high-rated movies)</li>
+    <li>Return final result as a list (array)</li>
+  </ol>
+
 ---
 
 ### Requirements
