@@ -5,6 +5,8 @@ It provides personalized movie suggestions based on user preferences through dat
 
 <img src="https://github.com/user-attachments/assets/163c4a81-32d4-4b16-bce8-367f3ecabcc0">
 
+---
+
 ### Work Flow Sessions
 
 - <strong>On Users Table Flow </strong>>>><br>
@@ -24,6 +26,8 @@ It provides personalized movie suggestions based on user preferences through dat
   4. Execute engine process
   5. Apply selected options #2 (filter for high-rated movies)
   6. Return final result as a list (array)
+  
+---
 
 ### Requirements
 
