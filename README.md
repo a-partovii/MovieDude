@@ -5,7 +5,7 @@ It provides personalized movie suggestions based on user preferences through dat
 
 <img src="https://github.com/user-attachments/assets/163c4a81-32d4-4b16-bce8-367f3ecabcc0">
 
-[Setup Requirements](#setup-requirements) | [Work Flow Sessions](#work-flow-sessions) | [DataBase Structure](#database-structure)
+[Setup Requirements](#setup-requirements)  |  [Workflow Sections](#workflow-sections)  |  [DataBase Structure](#database-structure)
 
 ---
 ### Setup Requirements:
@@ -24,8 +24,7 @@ pip install -r requirements.txt
 ```
 
 ---
-### Work Flow Sessions:
-
+### Workflow Sections:
 - <strong>On Users Table Flow </strong>>>><br>
   Extract and analyze user activity data from the database to determine personal preferences.
   <ol type="1">
