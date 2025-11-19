@@ -2,7 +2,8 @@ try:
     import sqlite3 
     import pandas as pd  
 except ImportError as error:
-    print("⚠️ Modules could not be imported: ", error)
+    # Colored error message with ANSI codes
+    print("\033[1;33m""⚠️  Failed to import modules ""\033[0m", error)
 
 def catch_watched_movies(db_path, user_id):
     """

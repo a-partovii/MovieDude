@@ -6,7 +6,8 @@ try:
     from itertools import chain
 
 except ImportError as error:
-    print("⚠️ Modules could not be imported: ", error)
+    # Colored error message with ANSI codes
+    print("\033[1;33m""⚠️  Failed to import modules: ""\033[0m", error)
 
 def find_user_interests(db_path, user_id):
     # Number of each feature to return

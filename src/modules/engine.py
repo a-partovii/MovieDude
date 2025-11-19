@@ -8,7 +8,8 @@ try:
     from termcolor import colored
     
 except ImportError as error:
-    print("⚠️ Modules could not be imported: ", error)
+    # Colored error message with ANSI codes
+    print("\033[1;33m""⚠️  Failed to import modules ""\033[0m", error)
 
 def recommender_movies(user_id, db_path, user_input, filter_watched, filter_top_rank):
 

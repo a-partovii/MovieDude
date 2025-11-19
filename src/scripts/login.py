@@ -3,7 +3,8 @@ try:
     from termcolor import colored
 
 except ImportError as error:
-    print("⚠️ Modules could not be imported: ", error)
+    # Colored error message with ANSI codes
+    print("\033[1;33m""⚠️  Failed to import modules ""\033[0m", error)
     
 def login(db_file):
     conn = sqlite3.connect(db_file)
