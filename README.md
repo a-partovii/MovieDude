@@ -5,7 +5,7 @@ It provides personalized movie suggestions based on user preferences through dat
 
 <img src="https://github.com/user-attachments/assets/163c4a81-32d4-4b16-bce8-367f3ecabcc0">
 
-[Setup Requirements](#setup-requirements)  |  [Workflow Sections](#workflow-sections)  |  [DataBase Structure](#database-structure)
+[Setup Requirements](#setup-requirements)  |  [Workflow Sections](#workflow-sections)  |  [DataBase Structure](#database-structure) | [MovieDude on DeepWiki](https://deepwiki.com/a-partovii/MovieDude)
 
 ---
 ### Setup Requirements:
@@ -76,3 +76,7 @@ MovieDude.db
     └── liked: BOOLEAN (DEFAULT FALSE)
 
 ```
+
+---
+
+**For more details, follow: [deepwiki.com/a-partovii/MovieDude](https://deepwiki.com/a-partovii/MovieDude)**
