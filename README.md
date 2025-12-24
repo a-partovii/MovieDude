@@ -14,7 +14,7 @@ After installing `Python 3.x` you can install the required packages by running t
 _- Using a virtual environment is recommended._
 
 ```
-pip install pandas==2.3.3 scikit-learn==1.7.2 numpy==2.3.3 termcolor==3.2.0
+pip install pandas==2.3.3 scikit-learn==1.7.2 numpy==2.3.3 rich==14.2.0
 ```
 
 Alternatively, you can install all dependencies from the included `requirements.txt` file, simply open your terminal in the project directory and run:
