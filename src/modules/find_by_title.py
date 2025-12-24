@@ -1,12 +1,9 @@
 import sqlite3
 
-def find_by_title(db_path):
-    while True:
-        title_query = input("Enter a movie title to find similar recommendations: ").strip()
-        if not title_query:
+def find_by_title(db_path, title):
+        if not title:
             print("Not a valid movie title, please try again.\n")
-            continue
-
+           
         try:
             with sqlite3.connect(db_path) as conn:
                 cursor = conn.cursor()
@@ -19,7 +16,7 @@ def find_by_title(db_path):
                 LIMIT 1
                 """
                 # Execute query to find the movie by title
-                cursor.execute(query, (f"%{title_query}%",))
+                cursor.execute(query, (f"%{title}%",))
                 result = cursor.fetchone()
 
                 if result:

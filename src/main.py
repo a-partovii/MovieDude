@@ -21,19 +21,29 @@ def main():
     print(colored(sep_line, "cyan"))
     print("1 : Discover Movies Based on Your Activities\n2 : Find Similar Movies by Given Movie Title")
     
+    recommend_movies = []
     while True:
         choice = input("\nEnter your choice: ")
         if choice == "1" :
             print(colored(sep_line, "cyan"))
-            recommender_movies(user_id, db_path, find_user_interests(db_path, user_id), filter_watched, filter_top_rank)
+            recommmend_movies = movie_recommender(user_id, db_path, find_by_title(db_path), filter_watched, filter_top_rank)
+            movie_recommender(user_id, db_path, find_user_interests(db_path, user_id), filter_watched, filter_top_rank)
+            print_titles(recommend_movies)
             break
         elif choice == "2" :
             print(colored(sep_line, "cyan"))
-            recommender_movies(user_id, db_path, find_by_title(db_path), filter_watched, filter_top_rank)
+            title_query = input("Enter a movie title to find similar recommendations: ").strip()
+            recommmend_movies = movie_recommender(user_id, db_path, find_by_title(db_path, title_query), filter_watched, filter_top_rank)
+            print_titles(recommend_movies)
             break
         else:
             print("Invalid option!")
         
+def print_titles(recommend_movies):
+    print("\nTop 10 Recommended Similar Movies: ")
+
+    for i, title in enumerate(recommend_movies, 1):
+        print(f"{i}. {title}")
 
 if __name__ == "__main__":
     main()
