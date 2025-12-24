@@ -1,9 +1,9 @@
 import sqlite3
 
 def find_by_title(db_path, title):
-        if not title:
-            print("Not a valid movie title, please try again.\n")
-           
+        '''
+            Returns genres and keywords for a movie by title from the SQLite database.
+        '''
         try:
             with sqlite3.connect(db_path) as conn:
                 cursor = conn.cursor()
@@ -28,7 +28,7 @@ def find_by_title(db_path, title):
                     return [genres, keywords]
 
                 else:
-                    print("No matching movie found. Please try again.\n")
+                    print("No matching movie found.\n")
 
         except sqlite3.Error as error:
             print(f"❌SQLite error: ", error)

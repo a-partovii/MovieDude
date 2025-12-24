@@ -1,9 +1,8 @@
 try:
     import sqlite3
-    from termcolor import colored
-    
-except ImportError as error:
-    # Colored error message with ANSI codes
+    from rich.console import Console
+    console = Console()
+except ImportError as error: # Colored error message with ANSI codes
     print("\033[1;33m""⚠️  Failed to import modules ""\033[0m", error)
     
 def login(db_file):
@@ -11,7 +10,6 @@ def login(db_file):
     conn.row_factory = sqlite3.Row
 
     cursor = conn.cursor()
-
     while True:
         user_id = input("Enter user ID: ").strip()
         password = input("Enter password: ").strip()
@@ -20,11 +18,11 @@ def login(db_file):
         user = cursor.fetchone()
 
         if not user:
-            print("❌ Username not found. Please try again.\n")
+            console.print("[red]❌ Username not found. Please try again.[/red]\n")
         elif user['password'] != password:
-            print("❌ Incorrect password. Please try again.\n")
+            console.print("❌ [red]Incorrect password. Please try again.[/red]\n")
         else:
-            print("\n✅ Welcome,",colored(f"{user['name']}", "yellow"))
+            console.print(f"\n✅ Welcome, [yellow]{user['name']}[/yellow]")
             cursor.close()
             conn.close()
             return user_id
