@@ -28,7 +28,6 @@ def main():
         choice = input("\nEnter your choice: ")
         if choice == "1" :
             console.print(sep_line)
-            
             with console.status("Working..."):
                 recommend_movies = movie_recommender(db_path, user_id, find_user_interests(db_path, user_id), filter_watched, filter_top_rank)
                 print_titles(recommend_movies)
@@ -36,12 +35,14 @@ def main():
 
         elif choice == "2" :
             console.print(sep_line)
-            title_query = input("Enter a movie title to find similar recommendations: ").strip()
-        
-            with console.status("Working..."):
-                recommend_movies = movie_recommender(db_path, user_id, find_by_title(db_path, title_query), filter_watched, filter_top_rank)
-                print_titles(recommend_movies)
-                break
+            while True:
+                title_query = input("Enter a movie title to find similar recommendations: ").strip()
+                if recommendation_input:= find_by_title(db_path, title_query):
+                    with console.status("Working..."):
+                        recommend_movies = movie_recommender(db_path, user_id, recommendation_input, filter_watched, filter_top_rank)
+                        print_titles(recommend_movies)
+                    break
+            break
 
         else:
             console.print("[yellow]Invalid option![/yellow] try again...")

@@ -29,8 +29,9 @@ def find_by_title(db_path, title):
 
                 else:
                     print("No matching movie found.\n")
+                    return 
 
         except sqlite3.Error as error:
             print(f"❌SQLite error: ", error)
-            return [[], []]
+            return 
 
