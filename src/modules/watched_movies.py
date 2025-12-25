@@ -13,7 +13,7 @@ def catch_watched_movies(db_path, user_id):
             query = "SELECT movie_id FROM Users_data WHERE user_id = ?"
             df = pd.read_sql(query, conn, params=(user_id,))
             return df['movie_id'].tolist()
+        
     except Exception as error:
         print(f"Error: ", error)
         return []
-
