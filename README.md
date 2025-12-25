@@ -2,6 +2,8 @@
 
 An advanced "content-based filtering" movie recommendation system built with Python, scikit-learn, and SQLite.<br>
 It provides personalized movie suggestions based on user preferences through data analysis, and also allows users to search by a specific movie title or keyword to find similar recommendations.
+<br>
+The current demo utilizes a pre-processed dataset of the top 6,000 [TMDB](https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies) movies.
 
 <img src="https://github.com/user-attachments/assets/163c4a81-32d4-4b16-bce8-367f3ecabcc0">
 
