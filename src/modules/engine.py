@@ -40,7 +40,7 @@ def movie_recommender(db_path, user_id, recommendation_input, filter_watched, fi
     user_vector = np.hstack([
         encoders[features[i]].transform([recommendation_input[i]]) for i in range(len(features))]).flatten()
     
-    # Compute similaritiesand store in DataFrame
+    # Compute similarities and store in DataFrame
     similarities = [jaccard_score(user_vector, encoded_matrix[i]) for i in range(len(encoded_matrix))]
     df["similarity"] = similarities
 
@@ -49,5 +49,6 @@ def movie_recommender(db_path, user_id, recommendation_input, filter_watched, fi
     if filter_top_rank:
         top_list = top_list.sort_values(by="final_score", ascending=False).head(10)
     recommen_movies = top_list.head(10)["title"].tolist()
+
 
     return recommen_movies
