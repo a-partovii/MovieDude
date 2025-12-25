@@ -10,12 +10,12 @@ except ImportError as error: # Colored error message with ANSI codes
 
 def main(): 
     # Set the path to the SQLite database
-    db_path = "H:/WORKSPACE/MovieDude/database/MovieDude.db"
+    db_path = "YOUR/PATH/HERE/MovieDude.db"
     user_id = login(db_path)
-
+    
     # Features for controlling engine options
-    filter_watched = True
-    filter_top_rank = True
+    filter_watched = False
+    filter_top_rank = False
 
     console.print(sep_line)
     console.print(
