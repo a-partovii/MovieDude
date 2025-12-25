@@ -81,4 +81,4 @@ MovieDude.db
 
 ---
 
-**For more details, follow: [deepwiki.com/a-partovii/MovieDude](https://deepwiki.com/a-partovii/MovieDude)**
+**For more details, follow: [deepwiki.com/a-partovii/MovieDude](https://deepwiki.com/a-partovii/MovieDude)** &nbsp; [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/a-partovii/MovieDude)
