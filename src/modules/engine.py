@@ -63,8 +63,9 @@ def movie_recommender(db_path: str, user_id: str, recommendation_input, filter_w
     if filter_top_rank:
         top_list = df.sort_values(by=["similarity", "final_score"], ascending=[False, False]).head(10)
     else:
-        # sort them by "similarity" and return top 10
+        # sort by "similarity" and return top 10
         top_list = df.sort_values(by="similarity", ascending=False).head(10)
 
-    recommen_movies = top_list.head(10)["title"].tolist()
+    recommen_movies = top_list["title"].tolist()
     return recommen_movies
+
