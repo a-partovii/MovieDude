@@ -5,7 +5,7 @@ It provides personalized movie suggestions based on user preferences through dat
 <br>
 The current demo utilizes a pre-processed dataset of the top 6,000 [TMDB](https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies) movies.
 
-<img src="https://github.com/user-attachments/assets/163c4a81-32d4-4b16-bce8-367f3ecabcc0">
+<img src="https://github.com/user-attachments/assets/e65d4bb8-0a68-4b15-b16b-4dd57d5ef5e4">
 
 [Setup Requirements](#setup-requirements)  |  [Workflow Sections](#workflow-sections)  |  [DataBase Structure](#database-structure) | [MovieDude on DeepWiki](https://deepwiki.com/a-partovii/MovieDude)
 
