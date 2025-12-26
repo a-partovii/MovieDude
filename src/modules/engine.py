@@ -3,25 +3,30 @@ try:
     import pandas as pd
     import numpy as np
     from sklearn.preprocessing import MultiLabelBinarizer
-    from sklearn.metrics import jaccard_score
+    from sklearn.metrics import pairwise_distances
     from modules.watched_movies import catch_watched_movies
-except ImportError as error: # Colored error message with ANSI codes
+except ImportError as error:  # Colored error message with ANSI codes
     print("\033[1;33m""⚠️  Failed to import modules ""\033[0m", error)
 
-def movie_recommender(db_path, user_id, recommendation_input, filter_watched, filter_top_rank):
+def movie_recommender(db_path: str, user_id: str, recommendation_input, filter_watched: bool, filter_top_rank: bool) -> list[str]:
     '''
     Recommends movies based on user input, using Jaccard similarity on genres and keywords.
     returns List of top 10 recommended movie titles.
+    recommendation_input: [[genres], [keywords]]
     '''
     conn = sqlite3.connect(db_path)
-    df = pd.read_sql("SELECT movie_id, title, genres, keywords, final_score FROM Movies_sorted", conn)
+    df = pd.read_sql(
+        "SELECT movie_id, title, genres, keywords, final_score FROM Movies_sorted",
+        conn
+    )
+    conn.close()
     
     # filter out watched movies (if true)
     if filter_watched:
         watched = catch_watched_movies(db_path, user_id)
         df = df[~df["movie_id"].isin(watched)]
 
-    # Preprocess features
+    # Pre-process features
     features = ["genres", "keywords"]
     for col in features:
         df[col] = df[col].fillna("").str.lower().str.strip().str.split(",")
@@ -35,20 +40,31 @@ def movie_recommender(db_path, user_id, recommendation_input, filter_watched, fi
         encoded = mlb.fit_transform(df[col])
         encoded_features.append(encoded)
         encoders[col] = mlb
-    encoded_matrix = np.hstack(encoded_features)
-
-    user_vector = np.hstack([
-        encoders[features[i]].transform([recommendation_input[i]]) for i in range(len(features))]).flatten()
     
+    encoded_matrix = np.hstack(encoded_features).astype(bool)
+
+    user_vector = np.hstack([encoders[col].transform([val]) 
+        for col, val in zip(features, recommendation_input)]).astype(bool)
+
     # Compute similarities and store in DataFrame
-    similarities = [jaccard_score(user_vector, encoded_matrix[i]) for i in range(len(encoded_matrix))]
+    distances = pairwise_distances(
+        encoded_matrix, 
+        user_vector.reshape(1, -1), 
+        metric="jaccard"
+    )
+    similarities = 1 - distances.flatten()
+
+    # The old version which was too slow
+    # similarities = [jaccard_score(user_vector, encoded_matrix[i]) for i in range(len(encoded_matrix))]
+
     df["similarity"] = similarities
 
-    # Get top 25 similar movies, then sort them by "final_score" (if True) and return top 10 by those scores
-    top_list = df.sort_values(by="similarity", ascending=False).head(25)
+    #  If True sort by "final_score" and "similarity" then return top 10 
     if filter_top_rank:
-        top_list = top_list.sort_values(by="final_score", ascending=False).head(10)
+        top_list = df.sort_values(by=["similarity", "final_score"], ascending=[False, False]).head(10)
+    else:
+        # sort them by "similarity" and return top 10
+        top_list = df.sort_values(by="similarity", ascending=False).head(10)
+
     recommen_movies = top_list.head(10)["title"].tolist()
-
-
     return recommen_movies
