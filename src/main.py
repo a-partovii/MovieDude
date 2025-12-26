@@ -1,7 +1,6 @@
 try:
     from scripts.login import login
     from modules import *
-    from rich.status import Status
     from rich.console import Console
     console = Console()
     sep_line = "[cyan]-[/cyan]" * 50 # Graphicall seprator line in terminal
@@ -55,4 +54,5 @@ def print_titles(recommend_titles):
 
 if __name__ == "__main__":
     main()
+
 input(">>>")
